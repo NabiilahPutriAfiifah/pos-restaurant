@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-dark navbar-secondary">
+<nav class="main-header navbar navbar-expand navbar-dark navbar-secondary fixed-top">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -37,7 +37,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <a class="nav-link" href="<?php echo base_url('/logout'); ?>" role="button">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
         </li>

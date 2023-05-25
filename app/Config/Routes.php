@@ -31,11 +31,28 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Login::index');
 $routes->get('/dashboard', 'Dashboard::index');
+
+//Login
 $routes->post('/login/process', 'Login::process');
 $routes->get('/dashboard', 'Kasir::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/logout', 'Login::logout');
 
+//Pelanggan
+$routes->get('/pelanggan', 'Pelanggan::index');
+$routes->get('/pelanggan/create', 'Pelanggan::create');
+
+$routes->get('/pelanggan/(:any)', 'Pelanggan::$1');
+$routes->post('/pelanggan/(:any)', 'Pelanggan::$1');
+
+// Supplier
+$routes->get('/supplier', 'Supplier::index');
+$routes->get('/supplier/(:any)', 'Supplier::$1');
+$routes->post('/supplier/(:any)', 'Supplier::$1');
+
+// Master
+$routes->get('/master/(:any)', 'Master::$1');
+$routes->post('/master/(:any)', 'Master::$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

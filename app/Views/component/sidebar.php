@@ -1,9 +1,10 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <i class="fab fa-cotton-bureau ml-3"></i>
-        <span class="brand-text font-weight-semibold px-3">Pos Toko Baju</span>
+    <a href="<?= base_url('dashboard') ?>" class="brand-link">
+        <!-- <i class="fab fa-cotton-bureau ml-3"></i> -->
+        <i class="fas fa-cookie-bite ml-3"></i>
+        <span class="brand-text font-weight-semibold px-3">Pos Restaurant</span>
     </a>
 
     <!-- Sidebar -->
@@ -14,7 +15,7 @@
                 <img src="/asset/image/avatar.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">Nabiilah Putri Afiifah</a>
             </div>
         </div>
 
@@ -47,19 +48,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('master/produk') ?>" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p> Produk</p>
+                            <a href="<?= base_url('master/menu') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-book-open"></i>
+                                <p> Menu </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('master/kategori') ?>" class="nav-link">
-                                <p><i class="nav-icon fas fa-tag"></i> Kategori</p>
+                                <i class="nav-icon fas fa-utensils"></i>
+                                <p> Kategori </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('master/ukuran') ?>" class="nav-link">
-                                <p><i class="nav-icon fas fa-arrows-alt-h"></i> Ukuran </p>
+                            <a href="<?= base_url('master/jenis') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-carrot"></i>
+                                <p> Jenis Makanan </p>
                             </a>
                         </li>
                     </ul>
@@ -72,12 +75,14 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="<?= base_url('transaksi/penjualan') ?>" class="nav-link">
-                                <p><i class="nav-icon fas fa-shopping-cart"></i> Penjualan</p>
+                                <i class="nav-icon fas fa-shopping-cart"></i>
+                                <p> Penjualan</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('transaksi/invoice') ?>" class="nav-link">
-                                <p><i class="nav-icon fas fa-file-invoice-dollar"></i> Invoice</p>
+                                <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                                <p> Invoice</p>
                             </a>
                         </li>
                     </ul>
