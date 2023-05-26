@@ -27,32 +27,32 @@ $routes->set404Override();
  * --------------------------------------------------------------------
  */
 
-// We get a performance increase by specifying the default
+// We add a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Login::index');
-$routes->get('/dashboard', 'Dashboard::index');
+$routes->add('/', 'Dashboard::index');
+$routes->add('/dashboard', 'Dashboard::index');
+$routes->add('/dashboard/(:any)', 'dashboard::$1');
 
 //Login
-$routes->post('/login/process', 'Login::process');
-$routes->get('/dashboard', 'Kasir::index');
-$routes->get('/login', 'Login::index');
-$routes->get('/logout', 'Login::logout');
+$routes->add('/login', 'Login::index');
+$routes->add('/logout', 'Login::logout');
+$routes->add('/login/(:any)', 'login::$1');
+$routes->add('/logout/(:any)', 'logout::$1');
+
 
 //Pelanggan
-$routes->get('/pelanggan', 'Pelanggan::index');
-$routes->get('/pelanggan/create', 'Pelanggan::create');
+$routes->add('/pelanggan', 'Pelanggan::index');
+$routes->add('/pelanggan/(:any)', 'Pelanggan::$1');
 
-$routes->get('/pelanggan/(:any)', 'Pelanggan::$1');
-$routes->post('/pelanggan/(:any)', 'Pelanggan::$1');
 
 // Supplier
-$routes->get('/supplier', 'Supplier::index');
-$routes->get('/supplier/(:any)', 'Supplier::$1');
-$routes->post('/supplier/(:any)', 'Supplier::$1');
+$routes->add('/supplier', 'Supplier::index');
+$routes->add('/supplier/(:any)', 'Supplier::$1');
+
 
 // Master
-$routes->get('/master/(:any)', 'Master::$1');
-$routes->post('/master/(:any)', 'Master::$1');
+$routes->add('/master/(:any)', 'Master::$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

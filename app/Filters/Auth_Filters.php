@@ -6,21 +6,31 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
-class userAuthFilter implements FilterInterface
+class Auth_Filters implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null) {
+        $except = [
+            'login/process',
+            'login/index',
+        ];
 
-        if(is_null(session()->get('logged_in'))) {
-            session()->setFlashdata('error', 'Silahkan login terlebih dahulu');
-            return redirect()->to(base_url('auth/login'));
+        if (is_null(session()->get('logged_in')) && !in_array($request->uri->getPath(), $except)) {
+            return redirect()
+                ->to(base_url('/login/index'))
+                ->with('message', 'Silakan login terlebih dahulu!')
+                ->with('type', 'error');
         }
- 
+
+        if (!is_null(session()->get('logged_in')) && in_array($request->uri->getPath(), $except)) {
+            return redirect()
+                ->back()
+                ->with('message', 'Anda sudah login.')
+                ->with('type', 'info');
+        }
     }
-public function after(RequestInterface $request, ResponseInterface $response, $arguments = null) {
-
-        if(!is_null(session()->get('logged_in'))) {
-            session()->setFlashdata('success', 'Anda sudah login');
-            return redirect()->to(base_url('auth/login'));
-        }
+ 
+    //--------------------------------------------------------------------
+ 
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null) {
     }
 }

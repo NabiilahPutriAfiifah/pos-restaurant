@@ -46,7 +46,7 @@ class Login extends BaseController {
             
         ])) {
             session()->setFlashdata('error', 'Email Harus Terisi');
-            return redirect()->back();
+            return redirect()->to(base_url('login'));
         }
 
         if (!$this->validate([
@@ -59,7 +59,7 @@ class Login extends BaseController {
             
         ])) {
             session()->setFlashdata('error', 'password Harus Terisi');
-            return redirect()->back();
+            return redirect()->to(base_url('login'));
         }
         if ($dataUser) {
             $password_check = password_verify($password, $dataUser['password']);
@@ -76,13 +76,13 @@ class Login extends BaseController {
             }
         } else {
             session()->setFlashdata('error', 'Email belum terdaftar');
-            return redirect()->back();
+            return redirect()->to(base_url('login'));
         }
     }
 
     public function logout()
     {
         session()->destroy();
-        return redirect()->to(base_url('/'));
+        return redirect()->to(base_url(''));
     }
 }
