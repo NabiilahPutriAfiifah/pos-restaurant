@@ -4,11 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PelangganModel extends Model {
+class RolesModel extends Model {
 
-    protected $table = 'pelanggan';
+    protected $table      = 'roles';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-
-    protected $allowedFields = ['tipe', 'discount'];
+    
+    protected $allowedFields = ['role'];
 }

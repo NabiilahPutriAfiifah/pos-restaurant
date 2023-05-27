@@ -15,6 +15,11 @@
                         placeholder="Masukkan Nomor Telepon" required>
                 </div>
                 <div class="form-group">
+                    <label for="nama">email</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email"
+                        required>
+                </div>
+                <div class="form-group">
                     <label for="nama">Alamat</label>
                     <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukkan Alamat">
                 </div>

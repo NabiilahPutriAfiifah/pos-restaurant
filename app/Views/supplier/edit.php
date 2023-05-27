@@ -18,6 +18,11 @@
                         value="<?= isset($data['no_telp']) ? $data['no_telp'] : '' ?>">
                 </div>
                 <div class="form-group">
+                    <label for="nama">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email"
+                        required value="<?= isset($data['email']) ? $data['email'] : '' ?>">
+                </div>
+                <div class="form-group">
                     <label for="nama">Alamat</label>
                     <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukkan Alamat"
                         required value="<?= isset($data['alamat']) ? $data['alamat'] : '' ?>">

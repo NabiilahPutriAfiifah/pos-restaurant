@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="/asset/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="/asset/plugins/sweetalert2/sweetalert2.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="/asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -24,4 +26,113 @@
     <link rel="stylesheet" href="/asset/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/asset/plugins/summernote/summernote-bs4.min.css">
+
+
+    <style>
+    /* btn warning */
+    .btn-warning {
+        background-color: #445199;
+        border: none;
+        outline: none;
+        transition: all 0.3s;
+    }
+
+    .btn-warning:before {
+        background-color: #445199;
+    }
+
+    .btn-warning:hover {
+        background-color: #445199;
+    }
+
+    .btn-warning:hover:before {
+        background-color: #445199;
+    }
+
+    .btn-warning:active {
+        background-color: #445199;
+    }
+
+    .btn-warning.clicked {
+        background-color: #445199;
+    }
+
+    /* btn danger */
+    .btn-danger {
+        background-color: #8080ed;
+        border: 0px;
+    }
+
+    .btn-danger:before {
+        background-color: #8080ed;
+    }
+
+    .btn-danger:hover {
+        background-color: #8080ed;
+    }
+
+    .btn-danger:hover:before {
+        background-color: #8080ed;
+    }
+
+    .btn-danger.clicked {
+        background-color: #8080ed;
+    }
+
+    /* btn success */
+    .btn-success {
+        background-color: #55596b;
+        border: none;
+        outline: none;
+        transition: all 0.3s;
+    }
+
+    .btn-success:before {
+        background-color: #55596b;
+    }
+
+    .btn-success:hover {
+        background-color: #55596b;
+    }
+
+    .btn-success:hover:before {
+        background-color: #55596b;
+    }
+
+    .btn-success:active {
+        background-color: #55596b;
+    }
+
+    .btn-success.clicked {
+        background-color: #55596b;
+    }
+
+    /* btn primary */
+    .btn-primary {
+        background-color: #17284f;
+        border: none;
+        outline: none;
+        transition: all 0.3s;
+    }
+
+    .btn-primary:before {
+        background-color: #17284f;
+    }
+
+    .btn-primary:hover {
+        background-color: #17284f;
+    }
+
+    .btn-primary:hover:before {
+        background-color: #17284f;
+    }
+
+    .btn-primary:active {
+        background-color: #17284f;
+    }
+
+    .btn-primary::after {
+        background-color: #17284f;
+    }
+    </style>
 </head>

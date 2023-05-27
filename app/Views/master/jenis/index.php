@@ -1,6 +1,8 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
+<?= $this->include('component/alert') ?>
+
 <section class="content">
     <div class="container-fluid">
         <div class="card card-default">
@@ -40,13 +42,13 @@
                         <h3 class="card-title">Daftar Jenis</h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped" style="background-color: #f3f3f3;">
                             <colgroup>
                                 <col width="10%">
                                 <col width="40%">
                                 <col width="40%">
                             </colgroup>
-                            <thead class="bg-secondary">
+                            <thead style="color: white; background-color: #55596b;">
                                 <tr>
                                     <th>#</th>
                                     <th>Jenis</th>

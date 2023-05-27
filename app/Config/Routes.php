@@ -29,14 +29,18 @@ $routes->set404Override();
 
 // We add a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+//Dashboard
 $routes->add('/', 'Dashboard::index');
 $routes->add('/dashboard', 'Dashboard::index');
 $routes->add('/dashboard/(:any)', 'dashboard::$1');
 
 //Login
 $routes->add('/login', 'Login::index');
-$routes->add('/logout', 'Login::logout');
 $routes->add('/login/(:any)', 'login::$1');
+
+//Logout
+$routes->add('/logout', 'Login::logout');
 $routes->add('/logout/(:any)', 'logout::$1');
 
 
@@ -53,6 +57,13 @@ $routes->add('/supplier/(:any)', 'Supplier::$1');
 // Master
 $routes->add('/master/(:any)', 'Master::$1');
 
+// User
+$routes->add('/user', 'User::index');
+$routes->add('/user/(:any)', 'User::$1');
+
+// Transaksi
+$routes->add('/transaksi', 'Transaksi::index');
+$routes->add('/transaksi/(:any)', 'Transaksi::$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

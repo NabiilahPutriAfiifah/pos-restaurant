@@ -67,9 +67,8 @@ class Supplier extends BaseController{
                 'title' => 'Ubah Data Supplier'
             )
         );
-
         if(empty($id)){
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('error', 'Data Tidak di Temukan');
         }
         $this->data['data'] = $this->supplier_model->select('*')->where(['id'=>$id])->first();
         return view('supplier/edit',$this->data);
@@ -80,6 +79,7 @@ class Supplier extends BaseController{
         $post = [
             'nama'      => $this->request->getPost('nama'),
             'no_telp'   => $this->request->getPost('no_telp'),
+            'email'   => $this->request->getPost('email'),
             'alamat'    => $this->request->getPost('alamat')
         ];
 
@@ -90,19 +90,19 @@ class Supplier extends BaseController{
         }
 
         if($save){
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('success', 'Data Berhasil di Ubah');
         } else {
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('success', 'Data Berhasil di Tambahkan');
         }
     }
 
     public function delete($id=''){
         if(empty($id)){
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('error', 'Data Tidak di Temukan');
         }
         $delete = $this->supplier_model->delete($id);
         if($delete){
-            return redirect()->to('supplier');
+            return redirect()->to('supplier')->with('error', 'Data Berhasil di Hapus');
         }
     }
 }

@@ -43,21 +43,21 @@ class Supplier extends Migration {
 		$this->db->table('supplier')->insertBatch([
             [
                 'nama'  	=> 'PT Chinese Food',
-                'no_telp' 	=> '088888888880978',
-                'email'  	=> 'ChiFood@gmail.com',
+                'no_telp' 	=> '08123413445',
+                'email'  	=> 'chifood@gmail.com',
                 'alamat'    => 'China'
             ],
             [
-                'nama'  	=> 'GarmentGuru',
-                'no_telp'   => '082223242526',
-                'email' 	=> 'garmeng@gmail.com',
-                'alamat'    => 'Jl. Pakaian Sejati No. 456'
+                'nama'  	=> 'PT Japanese Ate',
+                'no_telp'   => '08765432`1234',
+                'email' 	=> 'japanfu@gmail.com',
+                'alamat'    => 'Tokyo, Japan'
             ],
             [
-                'nama'  	=> 'StyleMakers',
-                'no_telp'   => '083132343536',
-                'email'  	=> 'stylem@gmail.com',
-                'alamat'    => 'Jl. Kreativitas Fashion No. 789'
+                'nama'  	=> 'PT Korean Kitchen',
+                'no_telp'   => '087767662636',
+                'email'  	=> 'Koki@gmail.com',
+                'alamat'    => 'Seoul, Korea Selatan'
             ],
         ]);
 	}

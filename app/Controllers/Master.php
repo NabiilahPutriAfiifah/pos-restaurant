@@ -59,7 +59,7 @@ class Master extends BaseController{
         );
 
         if(empty($id)){
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('error', 'Data Tidak di Temukan');
         }
         $this->data['data'] = $this->category_model->select('*')->where(['id'=>$id])->first();
         return view('master/kategori/edit', $this->data);
@@ -77,19 +77,19 @@ class Master extends BaseController{
         }
 
         if($save){
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Ubah');
         } else {
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Tambahkan');
         }
     }
 
     public function delete_kategori($id=''){
         if(empty($id)){
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('error', 'Data Tidak di Temukan');
         }
         $delete = $this->category_model->delete($id);
         if($delete){
-            return redirect()->to('master/kategori');
+            return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Hapus');
         }
     }
 
@@ -126,13 +126,15 @@ class Master extends BaseController{
                 'title' => 'Ubah Jenis Menu'
             )
         );
+        
 
         if(empty($id)){
-            return redirect()->to('master/jenis');
+            return redirect()->to('master/jenis')->with('error', 'Data Tidak di Temukan');
         }
         $this->data['data'] = $this->jenis_model->select('*')->where(['id'=>$id])->first();
         return view('master/jenis/edit', $this->data);
     }
+    
 
     public function submit_changes_jenis(){
         $this->data['request'] = $this->request;
@@ -146,19 +148,19 @@ class Master extends BaseController{
         }
         
         if($save){
-            return redirect()->to('master/jenis');
+            return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Ubah');
         } else {
-            return redirect()->to('master/jenis');
+            return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Tambahkan');
         }
     }
 
     public function delete_jenis($id=''){
         if(empty($id)){
-            return redirect()->to('master/jenis');
+            return redirect()->to('master/jenis')->with('error', 'Data Tidak di Temukan');
         }
         $delete = $this->jenis_model->delete($id);
         if($delete){
-            return redirect()->to('master/jenis');
+            return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Hapus');
         }
     }
 
@@ -242,6 +244,9 @@ class Master extends BaseController{
                 'title' => 'Ubah Data Menu'
             )
         );
+        if(empty($id)){
+            return redirect()->to('master/menu')->with('error', 'Data Tidak di Temukan');
+        }
 
         $this->data['kategori'] = $this->category_model->orderBy('id ASC')->select('*')->get()->getResult();
         $this->data['jenis'] = $this->jenis_model->orderBy('id ASC')->select('*')->get()->getResult();
@@ -269,19 +274,19 @@ class Master extends BaseController{
         }
         
         if($save){
-            return redirect()->to('master/menu');
+            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Ubah');
         } else {
-            return redirect()->to('master/menu');
+            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Tambah');
         }
     }
 
     public function delete_menu($id=''){
         if(empty($id)){
-            return redirect()->to('master/menu');
+            return redirect()->to('master/menu')->with('error', 'Data Tidak di Temukan');
         }
         $delete = $this->menu_model->delete($id);
         if($delete){
-            return redirect()->to('master/menu');
+            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Hapus');
         }
     }
 }

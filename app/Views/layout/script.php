@@ -8,6 +8,8 @@ $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
 <script src="/asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="/asset/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 <!-- ChartJS -->
 <script src="/asset/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->

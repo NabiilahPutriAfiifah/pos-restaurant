@@ -1,6 +1,8 @@
 <?= $this->extend('layout/templates') ?>
 <?= $this->section('content') ?>
 
+<?= $this->include('component/alert') ?>
+
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -13,8 +15,8 @@
                     <div class="card-body">
                         <a href="<?= base_url('master/create_menu') ?>" class="btn btn-success mb-3"><i
                                 class="fas fa-plus"></i> Tambah Data</a>
-                        <table class="table table-bordered table-bordered">
-                            <thead class="bg-secondary">
+                        <table class="table table-bordered table-bordered" style="background-color: #f3f3f3;">
+                            <thead style="color: white; background-color: #55596b;">
                                 <tr>
                                     <th>#</th>
                                     <th>Kode</th>
@@ -35,17 +37,19 @@
                                     <td><?= $pr->kode_menu ?></td>
                                     <td><?= $pr->nama_menu ?></td>
                                     <td><?= $pr->kategori ?></td>
-                                    <td><?= $pr->harga ?></td>
+                                    <td><?= 'Rp '.number_format($pr->harga, 0 , ',', '.') ?></td>
                                     <td><?= $pr->stok ?></td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="<?= base_url('master/update_menu/'.$pr->id) ?>"
-                                                class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                class="btn text-light rounded mx-1" title="Edit Data"
+                                                style="background-color: #445199;">
                                                 <i class="fa fa-edit"></i> Edit Data
                                             </a>
                                             <a href="<?= base_url('master/delete_menu/'.$pr->id) ?>"
                                                 onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()"
-                                                class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                class="btn text-light rounded mx-1" title="Delete Data"
+                                                style="background-color: #8080ed;">
                                                 <i class="fa fa-trash"></i> Delete Data
                                             </a>
                                         </div>

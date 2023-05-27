@@ -15,33 +15,31 @@ class Pelanggan extends Migration {
                 'unsigned'          => true, 
                 'auto_increment'    => true
             ],
-			'nama'      => [
-                'type'	        => 'VARCHAR', 
-                'constraint'    => 50
-            ],
-			'gender'    => [
-                'type'	        => 'VARCHAR', 
-                'constraint'	=> 2
-            ],
 			'tipe'   => [
-                'type'          => 'ENUM', 
-                'constraint'     => ['umum', 'member'],
-                'default'       => 'umum'
-            ],
-			'no_telp'    => [
                 'type'          => 'VARCHAR', 
-                'constraint'	=> 20
+                'constraint'    => 20
             ],
-			'alamat'    => [
-                'type'          => 'VARCHAR', 
-                'constraint'	=> 100
-            ],
+			'discount' => [
+				'type'       => 'DECIMAL',
+                'constraint' => '5,2',
+			],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp'
 		]);
 
 		$this->forge->addKey('id', true);
 		$this->forge->createTable('pelanggan', true);
+
+		$this->db->table('pelanggan')->insertBatch([
+			[
+				'tipe' 		=> 'Umum',
+				'discount' 	=> 0.0
+			],
+			[
+				'tipe' 		=> 'Membership',
+				'discount' 	=> 10.0
+			]
+		]);
 	}
 
 	//--------------------------------------------------------------------
