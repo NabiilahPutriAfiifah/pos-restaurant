@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\MenuModel;
 use App\Models\PelangganModel;
 use App\Models\PembelianModel;
+use App\Models\TransaksiModel;
+use App\Models\DetailTransaksiModel;
 
 class Transaksi extends BaseController{
 
@@ -14,12 +16,16 @@ class Transaksi extends BaseController{
     protected $menu_model;
     protected $customer_model;
     protected $buying_model;
+    protected $transaksi_model;
+    protected $detail_transac_model;
 
     public function __construct(){
 
         $this->menu_model = New MenuModel();
         $this->customer_model = New PelangganModel();
         $this->buying_model = New PembelianModel();
+        $this->transaksi_model = New TransaksiModel();
+        $this->detail_transac_model = New DetailTransaksiModel();
     }
 
     public function index(){
@@ -41,7 +47,7 @@ class Transaksi extends BaseController{
                                                       ->join('pelanggan', 'pelanggan.id = transaksi.customer_id')
                                                       ->get()->getResult();
 
-                                                      $this->data['total'] = 0;
+        $this->data['total'] = 0;
         foreach ($this->data['transaksi'] as $buy) {
             $this->data['total'] += $buy->Total;
         }
@@ -50,8 +56,6 @@ class Transaksi extends BaseController{
     }
 
     public function addMenu(){
-
-        $this->data['request'] = $this->request;
 
         $id_menu     = $this->request->getVar('menu');
         $id_pelanggan   = $this->request->getVar('pelanggan');
@@ -121,6 +125,35 @@ class Transaksi extends BaseController{
         foreach ($this->data['transaksi'] as $buy){
             $this->menu_model->set('stok', 'stok-'.$buy->jumlah, false)->where('id', $buy->menu_id)->update();
         }
+
+        $data_transac = [
+            'tanggal_penjualan' => $this->request->getVar('tanggal'),
+            'nama_kasir'    => $this->request->getVar('user'),
+            'sub_total'     => $this->data['sub_total'],
+            'diskon'        => $this->data['diskon'], 
+            'total_akhir'   => $this->data['total_akhir'],
+            'tunai'         => $this->data['tunai'],
+            'kembalian'     => $this->data['tunai'] - $this->data['total_akhir']
+        ];
+
+        $save_transac = $this->transaksi_model->insert($data_transac);
+
+        if($save_transac){
+            $transaction_id = $this->transaksi_model->insertID();
+            $items = $this->buying_model->getDataItem();
+            foreach ($items as $item) {
+                $data_detail_transac = [
+                    'id_penjualan' => $transaction_id,
+                    'nama_produk' => $item->nama_menu,
+                    'jumlah' => $item->jumlah,
+                    'harga' => $item->harga,
+                    'total_harga' => $item->total
+                ];
+                $this->detail_transac_model->insert($data_detail_transac);
+            }
+        }
+
+
         $this->buying_model->emptyTable();
 
         return view('transaksi/invoice_template', $this->data);

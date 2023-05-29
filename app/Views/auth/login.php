@@ -1,8 +1,9 @@
 <?= $this->extend('auth/templates') ?>
 <?= $this->section('content') ?>
 
+
 <div class="login-box">
-    <div class="login-logo">
+    <div class="login-logo" style="color:white;">
         <a><b>Pos</b>Restaurant</a>
     </div>
     <!-- /.login-logo -->
@@ -57,5 +58,6 @@
     </div>
 </div>
 <!-- /.login-box -->
+
 
 <?= $this->endSection() ?>

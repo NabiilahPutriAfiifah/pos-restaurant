@@ -122,6 +122,10 @@
         <div class="col-md-4">
             <form action="transaksi/invoice" method="post">
                 <div class="card card-outline">
+                    <input type="date" class="form-control" name="tanggal" id="tanggal" hidden
+                        value="<?=date('Y-m-d')?>">
+                    <input type="text" class="form-control" name="user" id="user" hidden
+                        value="<?= session()->get('name') ?>">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="sub_total" class="col-sm-5 col-form-label">Sub Total</label>

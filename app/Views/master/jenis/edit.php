@@ -3,9 +3,9 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('master/submit_changes_jenis') ?>" method="post">
+        <form action="<?= base_url('master/update_jenis/'.$data['id']) ?>" method="post">
             <div class="card-body">
-                <input type="hidden" name="id" value="<?= isset($data['id']) ? $data['id'] : '' ?>">
+
                 <div class="form-group">
                     <label for="nama">Jenis :</label>
                     <div class="input-group">

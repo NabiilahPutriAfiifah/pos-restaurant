@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="<?= base_url('master/submit_changes_jenis') ?>" method="POST">
+                <form action="<?= base_url('master/create_jenis') ?>" method="POST">
                     <div class="form-group">
                         <label for="jenis">Jenis : </label>
                         <div class="input-group">
@@ -67,7 +67,7 @@
                                     <td><?= $u->jenis ?></td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="<?= base_url('/master/update_jenis/'.$u->id) ?>"
+                                            <a href="<?= base_url('/master/edit_jenis/'.$u->id) ?>"
                                                 class="btn text-light rounded mx-1" title="Edit Data"
                                                 style="background-color: #445199;">
                                                 <i class="fa fa-edit"></i> Edit Data

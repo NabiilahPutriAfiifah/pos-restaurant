@@ -18,10 +18,18 @@ class PembelianModel extends Model
         return $this->belongsTo(PelangganModel::class, 'customer_id', 'id');
     }
 
-    public function getPembelian($id = false){
-        if ($id == false) {
-            return $this->findAll();
-        }
-        return $this->find($id);
+    // public function getPembelian($id = false){
+    //     if ($id == false) {
+    //         return $this->findAll();
+    //     }
+    //     return $this->find($id);
+    // }
+
+    public function getDataItem(){
+        return $this->select('menu.nama_menu, menu.harga, transaksi.jumlah, (menu.harga * jumlah) As total')
+                    ->join('menu', 'menu.id = transaksi.menu_id')
+                    ->join('pelanggan', 'pelanggan.id = transaksi.customer_id')
+                    ->get()
+                    ->getResult();
     }
 }

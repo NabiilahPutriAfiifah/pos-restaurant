@@ -69,10 +69,17 @@
                     </ul>
                 </li>
                 <?php } ?>
+                <li class="nav-header">Penjualan</li>
                 <li class="nav-item">
                     <a href="<?= base_url('transaksi') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-store"></i>
-                        <p> Transaksi</p>
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p> Input Transaksi</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('penjualan/riwayat') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-history"></i>
+                        <p> Riwayat Transaksi</p>
                     </a>
                 </li>
                 <li class="nav-header">Administrator</li>

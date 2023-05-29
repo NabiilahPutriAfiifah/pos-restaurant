@@ -67,9 +67,8 @@
                         <i class="fas fa-user-plus"></i>
                     </div>
 
-                    <a <?php if(session()->get('role_id') == 1 || session()->get('role_id') == 2) { ?>
-                        href="<?=base_url('user/user_manage')?>" <?php } ?> class="small-box-footer">Selengkapnya... <i
-                            class="fas fa-arrow-circle-right"></i></a>
+                    <a <?php if(session()->get('role_id') == 1) { ?> href="<?=base_url('user/user_manage')?>" <?php } ?>
+                        class="small-box-footer">Selengkapnya... <i class="fas fa-arrow-circle-right"></i></a>
 
                 </div>
             </div>

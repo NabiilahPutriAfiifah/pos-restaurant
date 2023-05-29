@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="<?= base_url('master/submit_changes_kategori') ?>" method="POST">
+                <form action="<?= base_url('master/create_kategori') ?>" method="POST">
                     <div class="form-group">
                         <label for="kategori">Kategori : </label>
                         <div class="input-group">
@@ -67,7 +67,7 @@
                                     <td><?= $k->kategori ?></td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="<?= base_url('master/update_kategori/'.$k->id) ?>"
+                                            <a href="<?= base_url('master/edit_kategori/'.$k->id) ?>"
                                                 class="btn text-light rounded mx-1" title="Edit Data"
                                                 style="background-color: #445199;">
                                                 <i class="fa fa-edit"></i> Edit Data

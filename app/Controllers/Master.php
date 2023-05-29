@@ -6,7 +6,7 @@ use App\Models\KategoriModel;
 use App\Models\JenisModel;
 use App\Models\MenuModel;
 use App\Models\SupplierModel;
-use Dompdf\Dompdf;
+// use Dompdf\Dompdf;
 
 class Master extends BaseController{
 
@@ -43,7 +43,8 @@ class Master extends BaseController{
         return view('master/kategori/index', $this->data);
     }
 
-    public function update_kategori($id=''){
+    public function edit_kategori($id=''){
+
         $this->data['title'] = 'Ubah Kategori Produk';
         $this->data['breadcrumbs'] = array(
             array(
@@ -60,39 +61,50 @@ class Master extends BaseController{
         );
 
         if(empty($id)){
-            return redirect()->to('master/kategori')->with('error', 'Data Tidak di Temukan');
+            return redirect()->to('master/kategori')->with('error', 'Data Tidak Ditemukan');
         }
+
         $this->data['data'] = $this->category_model->select('*')->where(['id'=>$id])->first();
         return view('master/kategori/edit', $this->data);
     }
 
-    public function submit_changes_kategori(){
-        $this->data['request'] = $this->request;
-        $post = [
-            'kategori' => $this->request->getPost('kategori')
+    public function create_kategori(){
+        $data = [
+            'kategori' => $this->request->getVar('kategori')
         ];
-        if(!empty($this->request->getPost('id'))) {
-            $save = $this->category_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
-        } else {
-            $save = $this->category_model->insert($post);
-        }
 
-        if($save){
-            return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Tambahkan');
-        } else {
-            return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Ubah');
-        }
+        if($this->category_model->where(['kategori' => $data['kategori']])->first()){
+            return redirect()->back()->withInput()->with('error', 'Kategori telah ada');
+        } 
+
+        $this->category_model->insert($data);
+        return redirect()->to('master/kategori')->with('success', 'Berhasil Menambahkan Data');
+    }
+
+    public function update_kategori($id=''){
+        $data = [
+            'kategori' => $this->request->getVar('kategori')
+        ];
+
+        if($this->category_model->where(['kategori' => $data['kategori']])->first()){
+            return redirect()->back()->withInput()->with('error', 'Kategori telah ada');
+        } 
+        $this->category_model->where(['id'=>$id])->set($data)->update();
+        return redirect()->to('master/kategori')->with('success', 'Berhasil Memperbaharui Data');
     }
 
     public function delete_kategori($id=''){
         if(empty($id)){
-            return redirect()->to('master/kategori')->with('error', 'Data Tidak di Temukan');
+            return redirect()->to('master/kategori')->with('error', 'Gagal Menghapus Data');
         }
         $delete = $this->category_model->delete($id);
         if($delete){
-            return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Hapus');
+            return redirect()->to('master/kategori')->with('success', 'Berhasil Menghapus Data');
         }
     }
+
+
+
 
     //-------------------------------------------- Jenis Makanan -----------------------------------------------------//
 
@@ -112,56 +124,63 @@ class Master extends BaseController{
         return view('master/jenis/index', $this->data);
     }
 
-    public function update_jenis($id=''){
-        $this->data['title'] = 'Ubah Jenis Menu';
+    public function edit_jenis($id=''){
+        $this->data['title'] = 'Ubah Jenis Makanan';
         $this->data['breadcrumbs'] = array(
             array(
                 'title' => 'Dashboard',
                 'url' => base_url()
             ),
             array(
-                'title' => 'Jenis Menu',
+                'title' => 'Jenis Makanan',
                 'url' => base_url('master/jenis')
             ),
             array(
-                'title' => 'Ubah Jenis Menu'
+                'title' => 'Ubah Jenis Makanan'
             )
         );
-        
 
         if(empty($id)){
-            return redirect()->to('master/jenis')->with('error', 'Data Tidak di Temukan');
+            return redirect()->to('master/jenis')->with('error', 'Data Tidak Ditemukan');
         }
         $this->data['data'] = $this->jenis_model->select('*')->where(['id'=>$id])->first();
         return view('master/jenis/edit', $this->data);
     }
-    
 
-    public function submit_changes_jenis(){
-        $this->data['request'] = $this->request;
-        $post = [
-            'jenis' => $this->request->getPost('jenis')
+    public function create_jenis(){
+        $data = [
+            'jenis' => $this->request->getVar('jenis')
         ];
-        if(!empty($this->request->getPost('id'))) {
-            $save = $this->jenis_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
-        } else {
-            $save = $this->jenis_model->insert($post);
-        }
-        
-        if($save){
-            return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Tambahkan');
-        } else {
-            return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Ubah');
-        }
+
+        if($this->jenis_model->where(['jenis' => $data['jenis']])->first()){
+            return redirect()->back()->withInput()->with('error', 'Jenis telah ada');
+        } 
+
+        $this->jenis_model->insert($data);
+        return redirect()->to('master/jenis')->with('success', 'Berhasil Menambahkan Data');
     }
 
+    public function update_jenis($id=''){
+        $data = [
+            'jenis' => $this->request->getVar('jenis')
+        ];
+
+        if($this->jenis_model->where(['jenis' => $data['jenis']])->first()){
+            return redirect()->back()->withInput()->with('error', 'Jenis telah ada');
+        } 
+        $this->jenis_model->where(['id'=>$id])->set($data)->update();
+        return redirect()->to('master/jenis')->with('success', 'Berhasil Memperbaharui Data');
+    }
+
+   
+    
     public function delete_jenis($id=''){
         if(empty($id)){
-            return redirect()->to('master/jenis')->with('error', 'Data Tidak di Temukan');
+            return redirect()->to('master/jenis')->with('error', 'Gagal Menghapus Data');
         }
         $delete = $this->jenis_model->delete($id);
         if($delete){
-            return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Hapus');
+            return redirect()->to('master/jenis')->with('success', 'Berhasil Menghapus Data');
         }
     }
 
@@ -214,22 +233,6 @@ class Master extends BaseController{
         return view('master/menu/create', $this->data);
     }
 
-    public function read_menu(){
-        $this->data['title'] = 'Detail Menu';
-        $this->data['breadcrumbs'] = array(
-            array(
-                'title' => 'Dashboard',
-                'url' => base_url()
-            ),
-            array(
-                'title' => 'Menu',
-                'url'   => base_url('master/menu')
-            ),
-            array(
-                'title' => 'Detail Menu'
-            )
-        );
-    }
 
     public function update_menu($id=''){
         $this->data['title'] = 'Ubah Data Menu';
@@ -260,7 +263,7 @@ class Master extends BaseController{
 
     public function submit_changes_menu(){
         $this->data['request'] = $this->request;
-        $post = [
+        $data = [
             'kode_menu' => $this->request->getPost('kode_menu'),
             'nama_menu' => $this->request->getPost('nama_menu'),
             'id_kategori' => $this->request->getPost('kategori'),
@@ -270,15 +273,11 @@ class Master extends BaseController{
             'stok'  => $this->request->getPost('stok'),
         ];
         if(!empty($this->request->getPost('id'))) {
-            $save = $this->menu_model->where(['id'=>$this->request->getPost('id')])->set($post)->update();
+            $this->menu_model->where(['id'=>$this->request->getPost('id')])->set($data)->update();
+            return redirect()->to('master/menu')->with('success', 'Berhasil Memperbaharui Data');
         } else {
-            $save = $this->menu_model->insert($post);
-        }
-        
-        if($save){
-            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Tambahkan');
-        } else {
-            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Ubah');
+            $this->menu_model->insert($data);
+            return redirect()->to('master/menu')->with('success', 'Berhasil Menambahkan Data');
         }
     }
 
@@ -292,14 +291,14 @@ class Master extends BaseController{
         }
     }
 
-    public function cetak(){
-        $data = [
-            'data' => $this->menu_model->getMenu()
-        ];
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml(view('/master/cetakLaporan', $data));
-        $dompdf->setPaper('A4', 'landscape');
-        $dompdf->render();
-        $dompdf->stream('Laporan_Pengeluaran_' . date('d-M-y'), ['Attachment' => 0]);
-    }
+    // public function cetak(){
+    //     $data = [
+    //         'data' => $this->menu_model->getMenu()
+    //     ];
+    //     $dompdf = new Dompdf();
+    //     $dompdf->loadHtml(view('/master/cetakLaporan', $data));
+    //     $dompdf->setPaper('A4', 'landscape');
+    //     $dompdf->render();
+    //     $dompdf->stream('Laporan_Pengeluaran_' . date('d-M-y'), ['Attachment' => 0]);
+    // }
 }
