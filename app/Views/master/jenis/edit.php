@@ -3,23 +3,23 @@
 
 <div class="container-fluid">
     <div class="card">
-        <form action="<?= base_url('master/submit_changes_ukuran') ?>" method="post">
+        <form action="<?= base_url('master/submit_changes_jenis') ?>" method="post">
             <div class="card-body">
                 <input type="hidden" name="id" value="<?= isset($data['id']) ? $data['id'] : '' ?>">
                 <div class="form-group">
-                    <label for="nama">Ukuran :</label>
+                    <label for="nama">Jenis :</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="ukuran" id="ukuran"
+                        <input type="text" class="form-control" name="jenis" id="jenis"
                             placeholder="Masukan Ukuran Baru" required
-                            value="<?= isset($data['ukuran']) ? $data['ukuran'] : '' ?>">
+                            value="<?= isset($data['jenis']) ? $data['jenis'] : '' ?>">
                     </div>
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn text-light" style="background-color: #55596b;">Submit</button>
             </div>
         </form>
     </div>

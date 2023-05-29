@@ -11,4 +11,13 @@ class PelangganModel extends Model {
     protected $useAutoIncrement = true;
 
     protected $allowedFields = ['tipe', 'discount'];
+
+    public function detailPelanggan($id = null) {
+        $builder = $this->builder($this->table)->select('id, tipe, discount');
+        if (empty($id)) {
+            return $builder->get()->getResult();
+        } else {
+            return $builder->where('id', $id)->get(1)->getRow();
+        }
+    }
 }

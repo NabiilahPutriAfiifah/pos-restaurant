@@ -11,8 +11,8 @@
                         <h3 class="card-title">Daftar Supplier</h3>
                     </div>
                     <div class="card-body">
-                        <a href="<?= base_url('supplier/create') ?>" class="btn btn-success mb-3"><i
-                                class="fas fa-plus"></i> Tambah Data</a>
+                        <a href="<?= base_url('supplier/create') ?>" class="btn text-light mb-3"
+                            style="background-color: #55596b;"><i class="fas fa-plus"></i> Tambah Data</a>
                         <table class="table table-bordered table-striped" style="background-color: #f3f3f3;">
                             <colgroup>
                                 <col width="5%">

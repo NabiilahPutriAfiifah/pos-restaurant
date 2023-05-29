@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="/asset/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="/asset/plugins/sweetalert2/sweetalert2.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/asset/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="/asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -26,7 +30,10 @@
     <link rel="stylesheet" href="/asset/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/asset/plugins/summernote/summernote-bs4.min.css">
-
+    <!-- jQuery -->
+    <script src="/asset/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="/asset/plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <style>
     /* btn warning */

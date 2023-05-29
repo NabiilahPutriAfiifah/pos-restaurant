@@ -76,11 +76,11 @@
                     </a>
                 </li>
                 <li class="nav-header">Administrator</li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <p><i class="nav-icon fas fa-user"></i> Profil</p>
                     </a>
-                </li>
+                </li> -->
                 <?php if(session()->get('role_id') == 1) { ?>
                 <li class="nav-item">
                     <a href="<?= base_url('user/user_manage') ?>" class="nav-link">

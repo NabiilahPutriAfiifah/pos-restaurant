@@ -2,7 +2,7 @@
  
 namespace App\Controllers;
  
-use App\Models\UserModel;
+use App\Models\UsersModel;
  
 class Login extends BaseController {
     // Session
@@ -16,7 +16,7 @@ class Login extends BaseController {
 
     public function __construct() {
 
-        $this->users = new UserModel();
+        $this->users = new UsersModel();
 
         $this->session= \Config\Services::session();
         $this->data['session'] = $this->session;

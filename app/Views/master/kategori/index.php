@@ -26,7 +26,9 @@
                                 placeholder="Masukan Kategori Baru" required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data</button>
+                    <button type="submit" class="btn text-light" style="background-color: #55596b;"><i
+                            class="fas fa-plus"></i>
+                        Tambah Data</button>
                 </form>
             </div>
         </div>
@@ -66,12 +68,14 @@
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="<?= base_url('master/update_kategori/'.$k->id) ?>"
-                                                class="btn btn-warning text-light rounded mx-1" title="Edit Data">
+                                                class="btn text-light rounded mx-1" title="Edit Data"
+                                                style="background-color: #445199;">
                                                 <i class="fa fa-edit"></i> Edit Data
                                             </a>
                                             <a href="<?= base_url('master/delete_kategori/'.$k->id) ?>"
                                                 onclick="if(confirm('Are you sure to delete this data?') === false) event.preventDefault()"
-                                                class="btn btn-danger rounded mx-1" title="Delete Data">
+                                                class="btn text-light rounded mx-1" title="Delete Data"
+                                                style="background-color: #8080ed;">
                                                 <i class="fa fa-trash"></i> Delete Data
                                             </a>
                                         </div>

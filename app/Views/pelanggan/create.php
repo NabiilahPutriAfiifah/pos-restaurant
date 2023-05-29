@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn text-lght" style="background-color: #55596b;">Submit</button>
             </div>
         </form>
     </div>

@@ -6,6 +6,7 @@ use App\Models\KategoriModel;
 use App\Models\JenisModel;
 use App\Models\MenuModel;
 use App\Models\SupplierModel;
+use Dompdf\Dompdf;
 
 class Master extends BaseController{
 
@@ -51,7 +52,7 @@ class Master extends BaseController{
             ),
             array(
                 'title' => 'Kategori Produk',
-                'url' => base_url('kategori')
+                'url' => base_url('master/kategori')
             ),
             array(
                 'title' => 'Ubah Kategori Produk'
@@ -77,9 +78,9 @@ class Master extends BaseController{
         }
 
         if($save){
-            return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Ubah');
-        } else {
             return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Tambahkan');
+        } else {
+            return redirect()->to('master/kategori')->with('success', 'Data Berhasil di Ubah');
         }
     }
 
@@ -120,7 +121,7 @@ class Master extends BaseController{
             ),
             array(
                 'title' => 'Jenis Menu',
-                'url' => base_url('jenis')
+                'url' => base_url('master/jenis')
             ),
             array(
                 'title' => 'Ubah Jenis Menu'
@@ -148,9 +149,9 @@ class Master extends BaseController{
         }
         
         if($save){
-            return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Ubah');
-        } else {
             return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Tambahkan');
+        } else {
+            return redirect()->to('master/jenis')->with('success', 'Data Berhasil di Ubah');
         }
     }
 
@@ -181,9 +182,10 @@ class Master extends BaseController{
         $this->data['menu'] = $this->menu_model
                                 ->orderBy('id ASC')
                                 ->select('menu.id, menu.kode_menu, 
-                                          menu.nama_menu, kategori.kategori, 
+                                          menu.nama_menu, kategori.kategori, jenis.jenis,
                                           menu.harga, menu.stok')
-                                ->join('kategori', 'kategori.id = menu.id_kategori')
+                                ->join('kategori', 'kategori.id = menu.id_kategori' )
+                                ->join('jenis', 'jenis.id = menu.id_jenis')
                                 ->get()->getResult();
 
         return view('master/menu/index', $this->data);
@@ -274,9 +276,9 @@ class Master extends BaseController{
         }
         
         if($save){
-            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Ubah');
+            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Tambahkan');
         } else {
-            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Tambah');
+            return redirect()->to('master/menu')->with('success', 'Data Berhasil di Ubah');
         }
     }
 
@@ -288,5 +290,16 @@ class Master extends BaseController{
         if($delete){
             return redirect()->to('master/menu')->with('success', 'Data Berhasil di Hapus');
         }
+    }
+
+    public function cetak(){
+        $data = [
+            'data' => $this->menu_model->getMenu()
+        ];
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml(view('/master/cetakLaporan', $data));
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream('Laporan_Pengeluaran_' . date('d-M-y'), ['Attachment' => 0]);
     }
 }

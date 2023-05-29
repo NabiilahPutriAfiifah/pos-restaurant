@@ -93,6 +93,16 @@ class User extends BaseController{
         return view('user/user_manage/edit', $this->data);
     }
 
+    public function delete_user($id=''){
+        if(empty($id)){
+            return redirect()->to('user/user_manage')->with('error', 'Gagal Menghapus Data');
+        }
+        $delete = $this->user_model->delete($id);
+        if($delete){
+            return redirect()->to('user/user_manage')->with('success', 'Berhasil Menghapus Data');
+        }
+    }
+
     public function submit_changes_user(){
         $this->data['request'] = $this->request;
         $status = 'aktif';

@@ -64,6 +64,7 @@ $routes->add('/user/(:any)', 'User::$1');
 // Transaksi
 $routes->add('/transaksi', 'Transaksi::index');
 $routes->add('/transaksi/(:any)', 'Transaksi::$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
